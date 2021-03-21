@@ -1,0 +1,51 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+
+	<div class="container">
+		<div class="container2 d-flex justify-content-between">
+			<a href="{% url 'refresh' %}" class="btn btn-sm btn-success">REFRESH</a>
+			<form action="submit" method="POST">
+				<a href="{% url 'deleteNews' %}" class="btn btn-sm btn-danger">DELETE All </a>	
+			</form>
+		    
+		</div>
+		<br>
+		<br>
+
+
+		<div class="container m-3">
+			<div class="row  bg-muted">
+				<div class="col-8">TITLE</div>
+				<div class="col-2">POLARITY</div>
+				<div class="col-2"></div>
+			</div>			
+		</div>
+
+
+
+		<div class="container">
+			{% if news %}
+			    {% for n in news %}
+				    <div class="row mb-2 ">
+				         <div class="col-8">
+				         	<div class="card">
+				         		<div class="card-body">
+				         			<p class="card-text">{{n.Headline_title}}</p>
+				         		</div>
+				         	</div>
+					     </div>
+					     <div class="col-2">
+					     	<a href="" class="btn btn-sm btn-primary px-5">{{n.Polarity}}</a>
+					     </div>
+					     <div class="col-2">
+					     	<a href="{}" class="btn btn-sm btn-success d-inline">Read</a>
+					     </div>
+			        </div>
+			    {% endfor %}	
+		    {% endif %}
+		</div>
+		
+	</div>	
+
+{% endblock content %}

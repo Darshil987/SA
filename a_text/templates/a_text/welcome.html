@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- CUSTOM STYLESHEET -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Document</title>
+</head>
+<body class>
+    
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-5 d-flex flex-row justify-content-around text-white">
+        <a href="{% url 'home' %}" class="navbar-brand pl-2 ">SENTIMENT ANALYSIS</a>
+
+        <ul class="navbar-nav ">
+            <li class="nav-item "><a href="{% url 'home' %}" class="nav-link">HOME</a></li>
+            <li class="nav-item "><a href="{% url 'v_tweet' %}" class="nav-link">TWITTER</a></li>
+            <li class="nav-item "><a href="{% url 'AText' %}" class="nav-link">TEXT</a></li>
+            <li class="nav-item "><a href="" class="nav-link">ABOUT</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+
+        <div class="jumbotron m-5 bg-light p-3 border-rounded border shadow-lg text-center">
+          <h1 class="display-4  mb-4">Sentiment Analysis</h1>
+          <p class="lead m-2">Sentiment analysis is contextual mining of text which identifies and extracts subjective information in source material, and helping a business to understand the social sentiment of their brand, product or service while monitoring online conversations.</p>
+          <hr class="my-4">
+          <p>We use the TextBlob library to analyse the sentiments of textual data.</p>
+          <p class="lead">
+            <a class="btn btn-dark btn-lg" href="https://en.wikipedia.org/wiki/Sentiment_analysis" role="button" target="_blank">Learn more</a>
+          </p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+    {% endblock content %}
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

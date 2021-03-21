@@ -1,0 +1,68 @@
+{% extends 'a_text/welcome.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="row m-5">
+
+	<div class="col-sm-3">
+		<h4 class="alert bg-secondary bg-rounded text-white text-center">Input Data</h4>
+		<form action="" method="POST">
+			{% csrf_token %}
+			{{form.as_p}}
+			<input type="submit" value="Analyze" class="btn btn-primary">
+		</form>
+
+	</div>
+	<!-- --------------------------------------- -->
+	<div class="col-sm-8 offset-1">
+		<h4 class="alert bg-secondary border-rounded text-white text-center">Recents</h4>
+		{% if InputData %}
+			<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      	<th scope="col">SR NO</th>
+			      	<th scope="col">TOPIC</th>
+			      	<th scope="col">TWEETS</th>
+			      	<th scope="col">POSITIVE</th>
+					<th scope="col">NEUTRAL</th>
+			      	<th scope="col">NEGATIVE</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+
+			  	{% for i in InputData%}
+				{% with numb=forloop.counter %}
+				    <tr style="text-align:center">
+						<th scope="row">{{numb}}</th>
+				{% endwith %}
+				      	<td>{{i.topic}}</td>
+				      	<td>{{i.no_tweets}}</td>
+				      	<td>{{i.pos}} %</td>
+				      	<td>{{i.neutral}} %</td>
+						<td>{{i.neg}} %</td>
+				      	<td>
+
+
+							<form action="{% url 'chart' i.id %}" method="POST" class="d-inline">
+				      			{% csrf_token %}
+				      			<input type="submit" class="btn btn-sm btn-success" value="VIEW CHART">
+						  	</form>
+
+						  	<form action="{% url 'deletedata' i.id %}" method="POST" class="d-inline">
+				      			{% csrf_token %}
+				      			<input type="submit" class="btn btn-danger btn-sm" value="DELETE">
+						  	</form>
+				      	</td>
+					</tr>
+				{% endfor %}
+			  </tbody>
+			</table>
+
+			{% else %}
+				<h4 class="text-center alert text-danger alert-sm p-0 width-0 border-rounded">NO RECORDS FOUND</h4>
+
+		{% endif %}
+	</div>
+</div>
+{% endblock content %}
