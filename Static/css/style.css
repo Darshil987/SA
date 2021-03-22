@@ -4,8 +4,63 @@ nav>ul>li>a:hover{
 	border-bottom: #DCE1E9;
 }
 
-body{
-	background: #DCE1E9;
+body.bd{
+
+	background: url(http://www.saurabhkarwal.com/wp-content/uploads/2018/03/Background-opera-speeddials-community-web-simple-backgrounds.jpg) no-repeat;
+	background: url(https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png) no-repeat;
+	background: url(https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/129325364/original/afaddcb9d7dfaaf5bff7ef04101935814665ac16/design-an-attractive-background-for-your-website.png) no-repeat;
+
+    background-size: cover;
+    background-attachment: fixed;
+	background-position: center;
+}
+
+#contwel{
+    background:rgba(0, 0, 0, 0.7);
+    border: 2px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+    margin: center;
+    color: white;
+    padding:50px;
 }
 
 
+#cont{
+    background:rgba(0, 0, 0, 0.5);
+    border: 2px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+    margin: 26px;
+    margin-top: 30px;
+
+    padding:20px;
+}
+#contresult{
+    background:rgba(0, 0, 0, 0.7);
+    border: 2px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+    margin-left:0px;
+    padding: 10px;
+}
+#conttext{
+    background:rgba(0, 0, 0, 0.5);
+    border: 2px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
+    padding: 10px;
+}
+
+#btn{
+    margin-left: 360px;
+	border-radius: 3px;
+
+}
+
+#btn1{
+    margin-left: 90px;
+	border-radius: 3px;
+
+}
+
+#head{
+    background:rbga(0, 0, 0, 0.9);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
+}

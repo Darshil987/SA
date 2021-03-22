@@ -5,20 +5,20 @@
 
 <div class="row m-5">
 
-	<div class="col-sm-3">
-		<h4 class="alert bg-secondary bg-rounded text-white text-center">Input Data</h4>
+	<div class="col-sm-3 text-white" id="cont">
+		<h4 class="alert bg-rounded text-white text-center" id="head">Input Data</h4>
 		<form action="" method="POST">
 			{% csrf_token %}
 			{{form.as_p}}
-			<input type="submit" value="Analyze" class="btn btn-primary">
+			<input type="submit" value="Analyze" class="btn btn-primary" id="btn1">
 		</form>
 
 	</div>
 	<!-- --------------------------------------- -->
-	<div class="col-sm-8 offset-1">
-		<h4 class="alert bg-secondary border-rounded text-white text-center">Recents</h4>
+	<div class="col-sm-8 offset-1" id="cont">
+		<h4 class="alert border-rounded text-white text-center" id="head">Recents</h4>
 		{% if InputData %}
-			<table class="table table-hover">
+			<table class="table table-hover text-white">
 			  <thead>
 			    <tr>
 			      	<th scope="col">SR NO</th>
@@ -33,7 +33,7 @@
 
 			  	{% for i in InputData%}
 				{% with numb=forloop.counter %}
-				    <tr style="text-align:center">
+				    <tr style="text-align:center; color:white;">
 						<th scope="row">{{numb}}</th>
 				{% endwith %}
 				      	<td>{{i.topic}}</td>

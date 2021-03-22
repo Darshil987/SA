@@ -11,10 +11,11 @@
 
     <title>Document</title>
 </head>
-<body class>
-    
+<body class="bd">
+
+
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-5 d-flex flex-row justify-content-around text-white">
-        <a href="{% url 'home' %}" class="navbar-brand pl-2 ">SENTIMENT ANALYSIS</a>
+        <a href="{% url 'home' %}" class="navbar-brand" id="brd">SENTIMENT ANALYSIS</a>
 
         <ul class="navbar-nav ">
             <li class="nav-item "><a href="{% url 'home' %}" class="nav-link">HOME</a></li>
@@ -26,8 +27,8 @@
 
     {% block content %}
 
-        <div class="jumbotron m-5 bg-light p-3 border-rounded border shadow-lg text-center">
-          <h1 class="display-4  mb-4">Sentiment Analysis</h1>
+        <div class="container text-center" id="contwel">
+          <h1 class="display-5  mb-4">Sentiment Analysis</h1>
           <p class="lead m-2">Sentiment analysis is contextual mining of text which identifies and extracts subjective information in source material, and helping a business to understand the social sentiment of their brand, product or service while monitoring online conversations.</p>
           <hr class="my-4">
           <p>We use the TextBlob library to analyse the sentiments of textual data.</p>

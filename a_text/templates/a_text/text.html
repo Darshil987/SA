@@ -1,22 +1,23 @@
 {% extends 'a_text/welcome.html' %}
 
 {% block content %}
-	<div class="container" >
-		<div class="row ml-0">
+	<div class="container">
+		<div class="row ml-0" >
 
-			<div class="col-sm-8 ">
+			<div class="col-sm-9 text-white" id="conttext">
 				<form action="" method="POST" class="d-inline">
 					{% csrf_token %}
 					{{ form.media }}
 					{{ form.as_p }}
 
-					<input type="submit" class="btn btn-lg btn-success" value="Analyse">
+					<input type="submit" class="btn btn-lg btn-success " id="btn" value="Analyse">
 				</form>
 			</div>			
 			<!------------------------------------------------------->
-			<div class="col-sm-2 offset-2 text-right">
+			<div class="col-sm-3 offset-1 text-right" id="contresult">
+			<h4 class="alert border-rounded text-white text-center" id="head">Recents</h4>
 				{% if Textdb %}
-					<table class="table table-hover mt-5">
+					<table class="table table-hover mt-1 text-white">
 					  <thead>
 					    <tr>
 					      <th scope="col">SRNO</th>
@@ -30,7 +31,7 @@
 					  	{% for k in Textdb %}
 							{% with numb=forloop.counter %}
 
-						    <tr class="text-dark">
+						    <tr class="text-dark text-white">
 						     	 <th scope="row">{{numb}}</th>
 							{% endwith %}
 						     	 <td>{{k.keyword}}</td>
