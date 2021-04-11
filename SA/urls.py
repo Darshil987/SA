@@ -14,8 +14,7 @@ urlpatterns = [
     path('text/<int:id>', vtext.delete_text, name='deleteText'),
     path('result/<int:id>', vtext.view_text, name='resultText'),
     path('getnews/', vnews.get_news, name='getnews'),
-    path('news/', vnews.welcome, name='welcome'),
+    path('news/', vnews.welcome, name='newswebscrap'),
     path('refresh/', vnews.refresh, name='refresh'),
     path('delete/', vnews.deleteNews, name='deleteNews'),
-    path('read/<Headline_title>', vnews.read, name='read'),
 ]
