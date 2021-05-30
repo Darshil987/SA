@@ -18,10 +18,10 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('text_body', ckeditor.fields.RichTextField(default='Enter your text here')),
                 ('keyword', models.CharField(max_length=20)),
-                ('polarity', models.FloatField(null=True)),
+                ('compound', models.FloatField(null=True)),
                 ('subjectivity', models.FloatField(null=True)),
                 ('comment', models.CharField(max_length=20, null=True)),
-                ('sub_comment', models.CharField(max_length=20, null=True)),
+                
             ],
         ),
     ]

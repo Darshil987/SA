@@ -5,4 +5,4 @@ from .models import TextInputData
 @admin.register(TextInputData)
 
 class TextInputDataAdmin(admin.ModelAdmin):
-	list_display=('keyword','text_body','polarity','subjectivity','comment','sub_comment')
+	list_display=('keyword','text_body','compound','subjectivity','comment')

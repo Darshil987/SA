@@ -3,6 +3,15 @@ from .models import TextInputData
 from .forms import TextBodyForm
 from textblob import TextBlob
 
+# FOR TEXT 
+import re
+import nltk
+from nltk.corpus import stopwords
+# nltk.download('stopwords')
+# nltk.download('vader_lexicon')
+from nltk.stem.porter import PorterStemmer
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
 
 # Create your views here.
 def A_Text(request):
@@ -14,42 +23,38 @@ def A_Text(request):
             u_text_body = form_ob.cleaned_data['text_body']
             print('KEYWORD---->', u_keyword)
 
-            # --------------------------------------
-            Polarity = 0
             Subjectivity = 0
-
             analyse = TextBlob(u_text_body)
-            print('Polarity:', analyse.sentiment.polarity)
-            print('Subjectivity:', analyse.sentiment.subjectivity)
-            Polarity = analyse.sentiment.polarity
             Subjectivity = analyse.sentiment.subjectivity
-            if Polarity <= 0.5:
-                comment = "POSITIVE"
-            if Polarity > 0.5:
-                comment = "HIGHLY POSITIVE"
-            elif Polarity == 0.0:
-                comment = "NEUTRAL"
-            elif Polarity >= -0.5:
-                comment = "NEGATIVE"
+            
+            # analysis
+            
+            review = re.sub('[^a-zA-Z]', ' ', u_text_body)
+            review = review.lower()
+            review = review.split() 
+            ps = PorterStemmer()
+            review = [ps.stem(word) for word in review if not word in set(stopwords.words('english'))]
+            review = ' '.join(review)
+            sid = SentimentIntensityAnalyzer()
+            res = sid.polarity_scores(review)
+            for i in res:
+                if i == 'compound':
+                    comp = res[i]
+
+            if comp > 0:
+                comment = "Positive"
+            elif comp < 0:
+                comment = "Negative"
             else:
-                comment = "HIGHLY NEGATIVE"
+                comment = "Neutral"
 
-            print("COMMENT :--->", comment)
+            
+            
+            # --------------------------------------
+                        # ------------------------------------------
 
-            if Subjectivity == 0.5:
-                comment_s = "NEUTRAL"
-            elif Subjectivity > 0.5:
-                comment_s = "SUBJECTIVE"
-            else:
-                comment_s = "OBJECTIVE"
-
-            print("Subjectivity :--->", comment_s)
-            print('----------------------')
-            print('----------------------')
-            # ------------------------------------------
-
-            result = TextInputData(text_body=u_text_body, keyword=u_keyword, polarity=Polarity,
-                                   subjectivity=Subjectivity, comment=comment, sub_comment=comment_s)
+            result = TextInputData(text_body=u_text_body, keyword=u_keyword, compound=comp,
+                                   subjectivity=Subjectivity, comment=comment)
             result.save()
             form_ob = TextBodyForm()
 
